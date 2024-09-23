@@ -28,7 +28,7 @@ twitter_username: addlater
 github_username:  addlater
 
 # Build settings
-theme: jekyll-dash
+remote-theme: pages-themes/hacker@v0.2.0
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
