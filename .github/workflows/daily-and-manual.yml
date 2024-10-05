@@ -1,0 +1,35 @@
+name: Daily and Manual Workflow
+
+on:
+  schedule:
+    # This will run the workflow every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # This allows manual triggering of the workflow
+
+jobs:
+  run-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo "Hello, this workflow runs daily and can be triggered manually!"
+
+      - name: Checkout .NET application repository
+        uses: actions/checkout@v3
+        with:
+          repository: maciej-skorupka/io-ai
+          path: IoAI
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'  # Specify the .NET version you're using
+
+      - name: Build .NET application
+        run: |
+          cd IoAI
+          dotnet restore
+          dotnet build --configuration Release
