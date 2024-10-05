@@ -1,1 +1,0 @@
-# maciej-skorupka.github.io
